@@ -1,0 +1,23 @@
+{
+  "name": "tech-job-analyzer",
+  "version": "1.0.0",
+  "description": "Tech Job Market Trend Analyzer with AI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "ai",
+    "gemini",
+    "node",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0"
+  }
+}

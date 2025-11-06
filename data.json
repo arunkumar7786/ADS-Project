@@ -1,0 +1,24 @@
+    {
+      "react": {
+        "skill": "React",
+        "cooccurrence": {
+          "labels": ["Node.js", "TypeScript", "Redux", "GraphQL", "Jest"],
+          "data": [85, 72, 65, 55, 50]
+        },
+        "geographic": {
+          "labels": ["New York", "San Francisco", "Austin", "Seattle", "Remote"],
+          "data": [120, 110, 80, 75, 95]
+        }
+      },
+      "python": {
+        "skill": "Python",
+        "cooccurrence": {
+          "labels": ["Django", "Flask", "SQL", "AWS", "Docker"],
+          "data": [90, 78, 88, 75, 68]
+        },
+        "geographic": {
+          "labels": ["San Francisco", "New York", "Boston", "Chicago", "Remote"],
+          "data": [150, 130, 90, 85, 110]
+        }
+      }
+    }

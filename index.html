@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Job Market Trend Analyzer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js (for top skills chart) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+    <!-- 2D Car Game Canvas (on top) -->
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- Main Content (underneath the canvas) -->
+    <div id="mainContent" class="container mx-auto p-4 md:p-8 max-w-5xl">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-indigo-600 dark:text-indigo-400">Tech Job Market Analyzer</h1>
+            <p class="text-lg text-slate-600 dark:text-slate-400 mt-2">Drive the car to interact and discover what skills are in demand.</p>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg mb-8 max-w-2xl mx-auto">
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input
+                    type="text"
+                    id="skillInput"
+                    placeholder="e.g., React, Python, AWS..."
+                    class="flex-grow p-4 bg-slate-100 dark:bg-slate-700 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                >
+                <button
+                    id="searchBtn"
+                    class="p-4 bg-indigo-600 text-white rounded-lg text-lg font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors"
+                >
+                    Analyze
+                </button>
+            </div>
+            <!-- Error Message Container -->
+            <div id="errorAlert" class="hidden mt-4 p-4 bg-red-100 dark:bg-red-900 border border-red-300 dark:border-red-700 text-red-700 dark:text-red-200 rounded-lg">
+                <span id="errorMessage"></span>
+            </div>
+        </div>
+
+        <!-- AI Loading Spinner (Hidden by default) -->
+        <div id="loader" class="hidden text-center my-12">
+            <svg class="animate-spin h-10 w-10 text-indigo-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400">Gemini is analyzing the job market...</p>
+        </div>
+
+        <!-- Static Top 10 Skills Chart (will be hidden on search) -->
+        <div id="topSkills" class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Top 10 In-Demand Skills (Mock Data)</h2>
+            <div class="chart-container" style="height: 400px;">
+                <canvas id="topSkillsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- AI Results Section (Hidden by default) -->
+        <div id="results" class="hidden space-y-8">
+
+            <!-- Section 1: High Demand Areas -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">High-Demand Areas</h2>
+                <!-- This is a list for text, not a chart -->
+                <ul id="demandList" class="list-disc list-inside space-y-2 text-lg">
+                    <!-- AI content will be injected here -->
+                </ul>
+            </div>
+
+            <!-- Section 2: Related Skills -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">Related Skills to Master</h2>
+                <!-- This is a grid for text cards, not a chart -->
+                <div id="relatedSkillsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- AI content will be injected here -->
+                </div>
+            </div>
+
+            <!-- Section 3: Learning Resources -->
+            <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold mb-6 text-indigo-600 dark:text-indigo-400">Learning Resources</h2>
+                <div id="resourcesList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- AI content will be injected here -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>
