@@ -1,117 +1,62 @@
-<!-- Tech Job Market Analyzer -->
-<!-- 
-A dynamic, AI-powered web application that provides real-time analysis of the tech job market. Users can enter a technology skill (e.g., "React", "Python") and receive an instant, AI-generated report on high-demand areas, essential related skills, and top learning resources.
+# 🚀 AI-Powered Tech Job Market Analyzer
 
-This project features a unique, interactive 2D car game that acts as the primary user interface, allowing users to "drive" over UI elements to control the application.
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Gemini API](https://img.shields.io/badge/Google%20Gemini-8E75B2?style=for-the-badge&logo=google&logoColor=white)
+![HTML5 Canvas](https://img.shields.io/badge/Canvas-Gamified-orange?style=for-the-badge)
 
-Features
+## 📖 Abstract
 
-AI-Powered Analysis: Uses the Google Gemini 2.5 Flash model to generate dynamic, up-to-date insights on any tech skill.
+A full-stack web application designed to help Computer Science students navigate the complex tech job market. Instead of browsing hundreds of job postings, users can simply type a skill (e.g., "React", "Python") and receive a real-time, AI-generated market report.
 
-Structured JSON Output: The backend server uses a strict JSON schema to force the AI to return clean, predictable data.
+This project features a **Gamified UI** where the user controls a 2D car to interact with the application, and it utilizes **Static RAG (Retrieval-Augmented Generation)** to inject fresh market context into the AI's analysis.
 
-Comprehensive Reports: The analysis includes:
+---
 
-Top 3-5 high-demand cities or regions.
+## ✨ Key Features
 
-A list of essential related skills with explanations.
+* **🧠 Static RAG Implementation:**
+    * Overcomes the "training data cutoff" of standard LLMs.
+    * Injects a custom "Market Context" layer (November 2025 trends) into the backend prompt to ensure analysis is based on current hiring realities.
+* **🏎️ Gamified UI (HTML Canvas):**
+    * Interactive 2D car controller written in Vanilla JS physics.
+    * Users "drive" the car to focus inputs and trigger analysis buttons.
+    * Collision detection logic integrated with DOM elements.
+* **🛡️ Structured JSON Output:**
+    * Enforces a strict JSON Schema on the Gemini API to guarantee predictable, error-free data parsing.
+* **📺 Smart YouTube Integration:**
+    * Auto-generates "Safe Search" links for recommended tutorials to prevent broken/hallucinated URLs.
+* **🎨 Dark Mode Design:**
+    * Built with Tailwind CSS for a modern, responsive, slate-themed aesthetic.
 
-A curated list of learning resources with links.
+---
 
-Interactive Game UI: A 2D car, controlled by the arrow keys, acts as the primary user-facing element.
+## 🛠️ Tech Stack
 
-UI as a Controller:
+### Frontend (Client-Side)
+* **HTML5 & CSS3**
+* **Tailwind CSS** (Styling & Dark Mode)
+* **Vanilla JavaScript** (DOM Manipulation, API Calls, Game Physics)
+* **Chart.js** (Data Visualization)
+* **HTML Canvas** (2D Car Rendering)
 
-Drive the car over the input field to focus it.
+### Backend (Server-Side)
+* **Node.js** (Runtime Environment)
+* **Express.js** (API Framework)
+* **Dotenv** (Security/Environment Variables)
+* **Node-Fetch** (External API Requests)
 
-Drive over the "Analyze" button and press Enter or Space to submit a query.
+### AI Services
+* **Google Gemini 2.5 Flash API** (Generative Intelligence)
 
-Drive over the "Top 10 Skills" chart to hover and view tooltips, as if it were a mouse cursor.
+---
 
-Modern & Responsive: Built with Tailwind CSS for a clean, dark-mode-ready, and fully responsive design.
+## ⚙️ Installation & Setup
 
-Tech Stack
+Follow these steps to run the project locally.
 
-This project is a full-stack application built with the "VAN" (Vanilla, Express, Node) stack, enhanced with AI.
-
-Frontend (Client-Side)
-
-HTML5: Semantic structure for the web page.
-
-Tailwind CSS: For all styling and responsive design.
-
-JavaScript (ES6+): Handles all user interaction, car physics, DOM manipulation, and API calls.
-
-Chart.js: Used to render the "Top 10 In-Demand Skills" chart.
-
-Backend (Server-Side)
-
-Node.js: The JavaScript runtime environment.
-
-Express.js: A minimal framework for creating the backend server and API endpoints.
-
-Google Gemini 2.5 Flash: The core AI model used for generating the job market analysis.
-
-node-fetch: Used to make API calls to the Gemini backend.
-
-dotenv: For securely managing the Gemini API key.
-
-cors: To allow the frontend and backend to communicate during development.
-
-Setup and Installation
-
-Follow these steps to get the project running on your local machine.
-
-Prerequisites
-
-Node.js: You must have Node.js (version 18 or higher) and npm installed. You can download it from nodejs.org.
-
-Gemini API Key: You must have a valid API key for the Gemini API. You can get one from Google AI Studio.
-
-1. Clone or Download the Project
-
-First, get the project files onto your computer.
-
-git clone https://github.com/arunkumar7786/Mera-Project.git
-
-
-(Or, just use the index.html, style.css, script.js, etc. files you already have in your folder.)
-
-2. Install Backend Dependencies
-
-In your project folder, open a terminal and run npm install to download all the required packages for the server:
-
-npm install express cors node-fetch@2 dotenv
-
-
-(Note: We specify node-fetch@2 because it's compatible with the require() syntax used in server.js)
-
-3. Create the Environment File
-
-This is the most important step for security.
-
-In the main project folder, create a new file named exactly .env
-
-Inside this .env file, add the following line, replacing the placeholder with your actual API key:
-
-GEMINI_API_KEY="PASTE_YOUR_ACTUAL_API_KEY_HERE"
-
-
-(Optional but recommended) Create a .gitignore file and add .env to it to ensure you never accidentally commit your key to a repository.
-
-4. Run the Application
-
-You need to run two parts:
-
-Start the Backend Server:
-In your terminal, run:
-
-node server.js
-
-
-You should see a message: Server listening on port 3000
-
-Open the Frontend:
-In your file explorer, simply double-click the index.html file to open it in your default web browser.
-
-You can now use the application! Type a skill, drive the car over the "Analyze" button, and press Enter to see the AI-generated results. -->"
+### 1. Clone the Repository
+```bash
+git clone [https://github.com/your-username/tech-job-analyzer.git](https://github.com/your-username/tech-job-analyzer.git)
+cd tech-job-analyzer
