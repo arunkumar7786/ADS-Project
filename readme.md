@@ -1,5 +1,5 @@
-Tech Job Market Analyzer
-
+<!-- Tech Job Market Analyzer -->
+<!-- 
 A dynamic, AI-powered web application that provides real-time analysis of the tech job market. Users can enter a technology skill (e.g., "React", "Python") and receive an instant, AI-generated report on high-demand areas, essential related skills, and top learning resources.
 
 This project features a unique, interactive 2D car game that acts as the primary user interface, allowing users to "drive" over UI elements to control the application.
@@ -72,8 +72,7 @@ Gemini API Key: You must have a valid API key for the Gemini API. You can get on
 
 First, get the project files onto your computer.
 
-git clone https://your-repository-url/tech-job-analyzer.git
-cd tech-job-analyzer
+git clone https://github.com/arunkumar7786/Mera-Project.git
 
 
 (Or, just use the index.html, style.css, script.js, etc. files you already have in your folder.)
@@ -115,4 +114,4 @@ You should see a message: Server listening on port 3000
 Open the Frontend:
 In your file explorer, simply double-click the index.html file to open it in your default web browser.
 
-You can now use the application! Type a skill, drive the car over the "Analyze" button, and press Enter to see the AI-generated results.
+You can now use the application! Type a skill, drive the car over the "Analyze" button, and press Enter to see the AI-generated results. -->"

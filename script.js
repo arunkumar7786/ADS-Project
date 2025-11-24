@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const demandList = document.getElementById('demandList');
     const relatedSkillsList = document.getElementById('relatedSkillsList');
     const resourcesList = document.getElementById('resourcesList');
+    // NEW: Select the YouTube container
+    const youtubeList = document.getElementById('youtubeList'); 
 
     let topSkillsChart = null;
 
     // --- Chart variables for car hover logic ---
-    // These are null but kept so handleChartHover doesn't break
     let cooccurrenceChart = null; 
     let locationChart = null; 
     let demandChart = null;
@@ -37,13 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             scales: {
                 x: {
-                    ticks: { color: '#475569', font: { family: "'Inter', sans-serif", size: 12 }},
+                    ticks: { color: '#ffffffff', font: { family: "'Inter', sans-serif", size: 12 }},
                     grid: { display: false },
                     border: { color: '#e2e8f0' },
                 },
                 y: {
                     beginAtZero: true,
-                    ticks: { color: '#475569', font: { family: "'Inter', sans-serif", size: 12 }},
+                    ticks: { color: '#ffffffff', font: { family: "'Inter', sans-serif", size: 12 }},
                     grid: { color: '#f1f5f9' },
                     border: { display: false },
                 },
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- Populate UI with AI data (TEXT-BASED) ---
             
             // 1. Populate High-Demand Areas List
-            demandList.innerHTML = ''; // Clear old results
+            demandList.innerHTML = ''; 
             if (data.high_demand_areas && data.high_demand_areas.length > 0) {
                 data.high_demand_areas.forEach(area => {
                     const li = document.createElement('li');
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 2. Populate Related Skills List
-            relatedSkillsList.innerHTML = ''; // Clear old results
+            relatedSkillsList.innerHTML = ''; 
             if (data.related_skills && data.related_skills.length > 0) {
                 data.related_skills.forEach(skill => {
                     const card = document.createElement('div');
@@ -109,19 +110,59 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // 3. Populate Learning Resources
-            resourcesList.innerHTML = ''; // Clear old results
+            resourcesList.innerHTML = ''; 
             if (data.learning_resources && data.learning_resources.length > 0) {
                 data.learning_resources.forEach(resource => {
                     const card = document.createElement('div');
-                    card.className = 'bg-slate-100 dark:bg-slate-700 p-4 rounded-lg shadow';
+                    // Dark card style
+                    card.className = 'bg-slate-800 p-4 rounded-lg border border-slate-700 shadow-sm hover:border-indigo-500 transition-all flex flex-col h-full';
+                    
                     card.innerHTML = `
-                        <a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="font-bold text-lg text-indigo-600 dark:text-indigo-400 hover:underline">${resource.name}</a>
-                        <p class="text-slate-600 dark:text-slate-400">${resource.type}</p>
+                        <a href="${resource.url}" target="_blank" class="font-bold text-lg text-indigo-400 hover:text-indigo-300 hover:underline mb-2">
+                            ${resource.name}
+                        </a>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Type: <span class="text-slate-300">${resource.type}</span>
+                        </p>
                     `;
                     resourcesList.appendChild(card);
                 });
             } else {
-                resourcesList.innerHTML = '<p>No learning resources found.</p>';
+                resourcesList.innerHTML = '<p class="text-slate-400 col-span-2">No learning resources found.</p>';
+            }
+
+            // 4. Populate YouTube Videos 
+            if (youtubeList) { 
+                youtubeList.innerHTML = ''; 
+                if (data.youtube_videos && data.youtube_videos.length > 0) {
+                    data.youtube_videos.forEach(video => {
+                        // Create Search Link
+                        const searchQuery = encodeURIComponent(`${video.title} ${video.channelName}`);
+                        const searchUrl = `https://www.youtube.com/results?search_query=${searchQuery}`;
+
+                        const card = document.createElement('div');
+                        // Dark card style - identical to above
+                        card.className = 'bg-slate-800 p-4 rounded-lg border border-slate-700 shadow-sm hover:border-indigo-500 transition-all flex flex-col h-full justify-between';
+                        
+                        card.innerHTML = `
+                            <div>
+                                <h4 class="font-bold text-lg text-indigo-400 mb-2 leading-tight">
+                                    ${video.title}
+                                </h4>
+                                <p class="text-slate-400 text-sm mb-4">
+                                    Channel: <span class="text-slate-300">${video.channelName}</span>
+                                </p>
+                            </div>
+                            
+                            <a href="${searchUrl}" target="_blank" class="inline-flex items-center text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors mt-auto">
+                                <span class="mr-2">▶</span> Watch on YouTube
+                            </a>
+                        `;
+                        youtubeList.appendChild(card);
+                    });
+                } else {
+                    youtubeList.innerHTML = '<p class="text-slate-400 col-span-2">No videos found.</p>';
+                }
             }
 
             // Show results
@@ -143,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- Removed chart rendering functions for AI data ---
-    // renderDemandChart and renderSkillsChart are no longer needed
 
     const renderTopSkillsChart = (topSkillsData) => {
         const ctx = document.getElementById('topSkillsChart').getContext('2d');
@@ -338,4 +378,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gameLoop();
 });
-
